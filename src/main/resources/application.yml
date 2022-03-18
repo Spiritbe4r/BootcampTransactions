@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: transaction-microservice
+  config:
+    import: configserver:http://localhost:8887
+  profiles:
+    active: dev
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
