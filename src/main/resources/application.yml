@@ -1,11 +1,30 @@
+server:
+  port: 8087
+
 spring:
   application:
     name: transaction-microservice
   config:
-    import: configserver:http://localhost:8887
+    import: optional:configserver:http://localhost:8888
   profiles:
     active: dev
+  data:
+    mongodb:
+      uri: mongodb+srv://spiritbear:Cuymagic321@mycluster.s22zz.mongodb.net/transactions?retryWrites=true&w=majority
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
 
+
+
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
