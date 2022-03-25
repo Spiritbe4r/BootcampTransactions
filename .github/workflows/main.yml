@@ -1,6 +1,10 @@
 name: AzureSpringCloud
 on: push
 
+env:
+  ASC_PACKAGE_PATH: ${{ github.workspace }}
+  AZURE_SUBSCRIPTION: ${{ secrets.AZURE_CREDENTIALS.subscriptionId }}
+  
 jobs:
   deploy_to_production:
     runs-on: ubuntu-latest
